@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abratti Football Performance | Consultoría de Élite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F0C040;
+    --dark: #080C14;
+    --dark2: #0D1420;
+    --dark3: #121B2C;
+    --white: #F5F2EC;
+    --muted: rgba(245,242,236,0.5);
+    --accent: #1A3A6B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(8,12,20,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 3px;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 5%;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,58,107,0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(212,160,23,0.08) 0%, transparent 60%),
+      var(--dark);
+  }
+
+  /* animated field lines */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(212,160,23,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,160,23,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    transform: perspective(800px) rotateX(55deg) translateY(-20%);
+    transform-origin: bottom;
+  }
+
+  /* diagonal slash */
+  .hero-slash {
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    background: var(--dark2);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-image-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(26,58,107,0.4) 0%, rgba(8,12,20,0.8) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .field-circle {
+    position: absolute;
+    border: 1px solid rgba(212,160,23,0.12);
+    border-radius: 50%;
+    animation: rotate 30s linear infinite;
+  }
+  .field-circle:nth-child(1) { width: 400px; height: 400px; }
+  .field-circle:nth-child(2) { width: 280px; height: 280px; animation-direction: reverse; animation-duration: 20s; }
+  .field-circle:nth-child(3) { width: 160px; height: 160px; border-color: rgba(212,160,23,0.2); }
+
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  .leo-initials {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    color: rgba(212,160,23,0.06);
+    letter-spacing: -10px;
+    user-select: none;
+    position: relative; z-index: 1;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 580px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px; background: var(--gold);
+  }
+
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero-h1 .line-gold { color: var(--gold); display: block; }
+
+  .hero-sub {
+    font-size: 17px; font-weight: 300; line-height: 1.7;
+    color: rgba(245,242,236,0.7);
+    max-width: 440px;
+    margin-bottom: 44px;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.2);
+    transition: left 0.3s;
+  }
+  .btn-primary:hover::after { left: 100%; }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(245,242,236,0.3);
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; bottom: 50px; right: 5%;
+    display: flex; gap: 48px;
+    z-index: 2;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5%; }
+
+  .section-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-eyebrow::before {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ── ABOUT / CEO ── */
+  #about { background: var(--dark2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .ceo-card {
+    background: var(--dark3);
+    border: 1px solid rgba(212,160,23,0.2);
+    padding: 40px;
+    position: relative;
+  }
+
+  .ceo-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: 40px;
+    width: 80px; height: 4px;
+    background: var(--gold);
+  }
+
+  .ceo-initials-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 100px;
+    color: rgba(212,160,23,0.1);
+    line-height: 1;
+    margin-bottom: -20px;
+  }
+
+  .ceo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .ceo-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .ceo-credentials {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  .credential {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; line-height: 1.5; color: rgba(245,242,236,0.75);
+  }
+
+  .cred-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px; flex-shrink: 0;
+  }
+
+  .about-text p {
+    font-size: 16px; line-height: 1.8;
+    color: rgba(245,242,236,0.7);
+    margin-bottom: 20px;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+    margin: 32px 0;
+  }
+
+  .quote-block p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--white) !important;
+    line-height: 1.4;
+    font-style: italic;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── METHODOLOGY ── */
+  #metodologia { background: var(--dark); }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .method-step {
+    background: var(--dark2);
+    padding: 40px 28px;
+    position: relative;
+    transition: background 0.3s;
+    border-top: 1px solid rgba(212,160,23,0.15);
+  }
+
+  .method-step:hover { background: var(--dark3); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(212,160,23,0.08);
+    line-height: 1;
+    margin-bottom: -10px;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: 14px; line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .step-gold-line {
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+
+  .method-step:hover .step-gold-line { width: 100%; }
+
+  /* ── CASOS DE ÉXITO ── */
+  #exitos { background: var(--dark2); }
+
+  .casos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .caso-card {
+    background: var(--dark3);
+    padding: 44px 32px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .caso-card:hover { border-color: var(--gold); }
+
+  .caso-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(212,160,23,0.07) 0%, transparent 70%);
+  }
+
+  .caso-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .caso-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .caso-flag {
+    font-size: 20px; margin-bottom: 20px; display: block;
+  }
+
+  .caso-path {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .path-item {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; letter-spacing: 0.5px;
+    color: rgba(245,242,236,0.7);
+  }
+
+  .path-arrow {
+    color: var(--gold); font-size: 12px;
+  }
+
+  .path-highlight {
+    background: rgba(212,160,23,0.12);
+    border: 1px solid rgba(212,160,23,0.3);
+    color: var(--gold) !important;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .caso-desc {
+    font-size: 13px; line-height: 1.6;
+    color: var(--muted);
+    border-top: 1px solid rgba(245,242,236,0.08);
+    padding-top: 20px;
+  }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--dark); }
+
+  .servicios-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .servicio {
+    background: var(--dark2);
+    padding: 44px 36px;
+    display: flex; gap: 24px;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .servicio:hover { background: var(--dark3); }
+
+  .servicio-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+  }
+
+  .servicio-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .servicio-desc {
+    font-size: 14px; line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── AGENTE ── */
+  #contacto { background: var(--dark2); }
+
+  .contacto-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+
+  .contacto-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .agent-embed {
+    background: var(--dark3);
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .agent-topbar {
+    background: var(--dark);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid rgba(212,160,23,0.15);
+  }
+
+  .agent-dot-live {
+    width: 8px; height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+  }
+  @keyframes pulse-green { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .agent-topbar-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.5);
+  }
+
+  .chat-window {
+    padding: 28px 24px;
+    min-height: 320px;
+    display: flex; flex-direction: column; gap: 16px;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .msg-row {
+    display: flex; gap: 12px; align-items: flex-start;
+    animation: msgIn 0.3s ease;
+  }
+  @keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+  .msg-row.user { flex-direction: row-reverse; }
+
+  .msg-av {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px; flex-shrink: 0;
+  }
+
+  .msg-av.bot { background: var(--gold); color: var(--dark); }
+  .msg-av.usr { background: var(--accent); color: var(--white); font-size: 10px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+
+  .msg-bub {
+    max-width: 78%;
+    padding: 12px 16px;
+    font-size: 14px; line-height: 1.6;
+    border-radius: 2px;
+  }
+
+  .msg-bub.bot {
+    background: rgba(245,242,236,0.06);
+    border: 1px solid rgba(245,242,236,0.1);
+    color: var(--white);
+    border-radius: 2px 12px 12px 12px;
+  }
+
+  .msg-bub.usr {
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 12px 2px 12px 12px;
+  }
+
+  .quick-replies {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 10px;
+  }
+
+  .qr-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid rgba(212,160,23,0.4);
+    color: var(--gold);
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 0;
+  }
+
+  .qr-btn:hover { background: var(--gold); color: var(--dark); }
+
+  .chat-input-area {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(245,242,236,0.08);
+    display: flex; gap: 10px;
+  }
+
+  .chat-input {
+    flex: 1;
+    background: rgba(245,242,236,0.06);
+    border: 1px solid rgba(245,242,236,0.12);
+    color: var(--white);
+    padding: 12px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: rgba(212,160,23,0.5); }
+  .chat-input::placeholder { color: rgba(245,242,236,0.3); }
+
+  .chat-send {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px; letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--gold-light); }
+  .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .typing-indicator {
+    display: flex; gap: 4px; padding: 6px 0;
+  }
+  .typing-indicator span {
+    width: 7px; height: 7px;
+    background: rgba(245,242,236,0.3);
+    border-radius: 50%;
+    animation: typ 1.2s infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typ { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(212,160,23,0.15);
+    padding: 60px 5% 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .footer-brand span { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 14px; line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .social-links { display: flex; gap: 14px; }
+  .social-link {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid rgba(245,242,236,0.15);
+    padding: 8px 14px;
+    transition: all 0.2s;
+  }
+  .social-link:hover { color: var(--gold); border-color: rgba(212,160,23,0.4); }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(245,242,236,0.06);
+    padding-top: 28px;
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(245,242,236,0.3);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid, .casos-grid, .servicios-wrap { grid-template-columns: 1fr; }
+    .method-grid { grid-template-columns: 1fr 1fr; }
+    .hero-slash { display: none; }
+    footer { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stats { position: relative; bottom: auto; right: auto; margin-top: 40px; justify-content: flex-start; }
+    .hero { flex-direction: column; padding-top: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ABRATTI<span>.</span>SPORT</div>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#metodologia">Metodología</a></li>
+    <li><a href="#exitos">Éxitos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Consulta gratuita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-slash">
+    <div class="hero-image-placeholder">
+      <div class="field-circle"></div>
+      <div class="field-circle"></div>
+      <div class="field-circle"></div>
+      <div class="leo-initials">LA</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Consultoría de élite</div>
+    <h1 class="hero-h1">
+      ROMPE<br>
+      <span class="line-gold">TUS LÍMITES</span>
+    </h1>
+    <p class="hero-sub">
+      Transformamos talentos futbolísticos en profesionales de alto nivel. Metodología probada con resultados que hablan solos.
+    </p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Quiero ser profesional</a>
+      <a href="#exitos" class="btn-ghost">Ver casos de éxito</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">+15</div>
+      <div class="stat-label">Años de experiencia</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Selecciones nacionales</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Personalizado</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CEO -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="ceo-card">
+        <div class="ceo-initials-big">LA</div>
+        <div class="ceo-name">Leonardo Abratti</div>
+        <div class="ceo-title">CEO &amp; Director Técnico</div>
+        <div class="ceo-credentials">
+          <div class="credential">
+            <div class="cred-dot"></div>
+            <span>Entrenador profesional en 1ª y 2ª División Argentina (AFA)</span>
+          </div>
+          <div class="credential">
+            <div class="cred-dot"></div>
+            <span>Asesor cuerpo técnico DUX Logroño — ascenso a LigaF (2ª División España)</span>
+          </div>
+          <div class="credential">
+            <div class="cred-dot"></div>
+            <span>Director Deportivo y formador de futbolistas profesionales</span>
+          </div>
+          <div class="credential">
+            <div class="cred-dot"></div>
+            <span>Jugador profesional en Rosario, Argentina</span>
+          </div>
+          <div class="credential">
+            <div class="cred-dot"></div>
+            <span>Asesor European Sporteam España — más de 15 años</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-eyebrow">Quiénes somos</div>
+      <h2 class="section-title">LA EXCELENCIA<br>COMO MÉTODO</h2>
+      <p>Abratti Football Performance no es una academia más. Somos una consultoría de transformación futbolística que trabaja donde nadie más trabaja: en los conceptos no asimilados, en los límites mentales, en la resolución del juego que diferencia a un jugador amateur de uno profesional.</p>
+      <p>Cada proceso es único. Analizamos al futbolista en profundidad, identificamos los frenos que le impiden dar el salto, y diseñamos un plan de acción a medida para que alcance su nivel top.</p>
+      <div class="quote-block">
+        <p>"Hacer sencillo lo que es muy complicado, con visión del fútbol muy avanzada. Eso es Leo Abratti."</p>
+      </div>
+      <a href="#contacto" class="btn-primary">Hablemos de tu carrera</a>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section id="metodologia">
+  <div class="section-eyebrow reveal">Cómo trabajamos</div>
+  <h2 class="section-title reveal">PROCESO DE<br>TRANSFORMACIÓN</h2>
+  <div class="method-grid">
+    <div class="method-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Análisis profundo</div>
+      <p class="step-desc">Evaluamos al jugador en su totalidad: técnica, táctica, mentalidad, entorno. Identificamos con precisión qué frena su crecimiento.</p>
+      <div class="step-gold-line"></div>
+    </div>
+    <div class="method-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Diagnóstico real</div>
+      <p class="step-desc">Detectamos los conceptos no asimilados y los patrones que limitan la resolución del juego en situaciones de alta exigencia.</p>
+      <div class="step-gold-line"></div>
+    </div>
+    <div class="method-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Plan de acción</div>
+      <p class="step-desc">Diseñamos un programa 100% personalizado con objetivos claros y medibles para corregir, potenciar y elevar el nivel del futbolista.</p>
+      <div class="step-gold-line"></div>
+    </div>
+    <div class="method-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Salto de nivel</div>
+      <p class="step-desc">El futbolista alcanza su rendimiento top. Visibilidad ante clubes y representantes. El siguiente nivel deja de ser un sueño.</p>
+      <div class="step-gold-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS DE ÉXITO -->
+<section id="exitos">
+  <div class="section-eyebrow reveal">Resultados reales</div>
+  <h2 class="section-title reveal">HISTORIAS DE<br>TRANSFORMACIÓN</h2>
+  <div class="casos-grid">
+    <!-- Marcos -->
+    <div class="caso-card reveal">
+      <div class="caso-year">Desde 2020 · 15 años</div>
+      <div class="caso-name">Marcos Fernández</div>
+      <span class="caso-flag">🇪🇸</span>
+      <div class="caso-path">
+        <div class="path-item">Nàstic de Tarragona</div>
+        <div class="path-item"><span class="path-arrow">→</span> Selección Catalana</div>
+        <div class="path-item"><span class="path-arrow">→</span> Real Betis Balompié</div>
+        <div class="path-item"><span class="path-arrow">→</span> Betis Deportivo (2 temporadas)</div>
+        <div class="path-item"><span class="path-arrow">→</span> Espanyol de Barcelona</div>
+        <div class="path-item path-highlight"><span class="path-arrow">★</span> Nº 9 Pichichi AD Ceuta</div>
+      </div>
+      <p class="caso-desc">Llegó a nosotros a los 15 años. Hoy es referencia goleadora en la categoría profesional española, cedido por el Espanyol de Barcelona.</p>
+    </div>
+
+    <!-- Sofía -->
+    <div class="caso-card reveal">
+      <div class="caso-year">2024</div>
+      <div class="caso-name">Sofía Domínguez</div>
+      <span class="caso-flag">🇦🇷</span>
+      <div class="caso-path">
+        <div class="path-item">Proceso de transformación 2024</div>
+        <div class="path-item"><span class="path-arrow">→</span> Mundial Sub-20 Colombia</div>
+        <div class="path-item path-highlight"><span class="path-arrow">★</span> Selección Argentina</div>
+      </div>
+      <p class="caso-desc">Trabajamos juntos en su desarrollo durante 2024. Hoy viste la camiseta de la Selección Mayor Argentina y participó en el Mundial Sub-20 de Colombia.</p>
+    </div>
+
+    <!-- Juan Cruz -->
+    <div class="caso-card reveal">
+      <div class="caso-year">2021 — 2023</div>
+      <div class="caso-name">Juan Cruz Bejarano</div>
+      <span class="caso-flag">🇪🇸🇦🇷</span>
+      <div class="caso-path">
+        <div class="path-item">Llega desde Argentina a España</div>
+        <div class="path-item"><span class="path-arrow">→</span> Proceso de visibilidad</div>
+        <div class="path-item path-highlight"><span class="path-arrow">★</span> FC Barcelona lo ficha</div>
+      </div>
+      <p class="caso-desc">Trabajamos durante 3 años para hacerlo visible ante los grandes clubes. FC Barcelona vino a buscarlo. En breve, su aparición definitiva en el fútbol de élite.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-eyebrow reveal">Qué ofrecemos</div>
+  <h2 class="section-title reveal">NUESTROS<br>SERVICIOS</h2>
+  <div class="servicios-wrap">
+    <div class="servicio reveal">
+      <div class="servicio-icon">01</div>
+      <div>
+        <div class="servicio-title">Consultoría individual de rendimiento</div>
+        <p class="servicio-desc">Sesiones de análisis y trabajo personalizado para identificar y eliminar los frenos que impiden al futbolista alcanzar su máximo potencial.</p>
+      </div>
+    </div>
+    <div class="servicio reveal">
+      <div class="servicio-icon">02</div>
+      <div>
+        <div class="servicio-title">Plan de visibilidad profesional</div>
+        <p class="servicio-desc">Estrategia integral para que los clubes y representantes del más alto nivel te vean. Conectamos talento con oportunidad.</p>
+      </div>
+    </div>
+    <div class="servicio reveal">
+      <div class="servicio-icon">03</div>
+      <div>
+        <div class="servicio-title">Acompañamiento a largo plazo</div>
+        <p class="servicio-desc">No somos un servicio puntual. Acompañamos al futbolista en todo su proceso de crecimiento, temporada tras temporada.</p>
+      </div>
+    </div>
+    <div class="servicio reveal">
+      <div class="servicio-icon">04</div>
+      <div>
+        <div class="servicio-title">Formación de mentalidad ganadora</div>
+        <p class="servicio-desc">El talento no basta. Trabajamos la resolución bajo presión, la toma de decisiones y el perfil mental del futbolista profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTE / CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-header reveal">
+      <div class="section-eyebrow" style="justify-content:center">Primer paso</div>
+      <h2 class="section-title">¿ERES EL PRÓXIMO<br><span style="color:var(--gold)">CASO DE ÉXITO?</span></h2>
+      <p style="font-size:16px;color:var(--muted);margin-top:16px">Habla ahora con nuestro agente. Sin compromiso. La consulta inicial es gratuita.</p>
+    </div>
+
+    <div class="agent-embed reveal">
+      <div class="agent-topbar">
+        <div class="agent-dot-live"></div>
+        <div class="agent-topbar-text">Agente AFP — Disponible ahora</div>
+      </div>
+      <div class="chat-window" id="chatWin"></div>
+      <div class="chat-input-area">
+        <input class="chat-input" id="chatIn" placeholder="Escribe aquí tu mensaje..." />
+        <button class="chat-send" id="chatSend" onclick="sendMsg()">ENVIAR</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">ABRATTI<span>.</span>SPORT</div>
+    <p class="footer-tagline">Consultoría de alto rendimiento futbolístico.<br>Transformamos talentos. Creamos profesionales.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/leonardoabratti/" target="_blank" class="social-link">Instagram Leo</a>
+      <a href="https://www.instagram.com/abrattisport/" target="_blank" class="social-link">Instagram AFP</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Navegación</div>
+    <ul class="footer-links">
+      <li><a href="#about">Quiénes somos</a></li>
+      <li><a href="#metodologia">Metodología</a></li>
+      <li><a href="#exitos">Casos de éxito</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contacto</div>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/abrattisport/">@abrattisport</a></li>
+      <li><a href="https://www.instagram.com/leonardoabratti/">@leonardoabratti</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Abratti Football Performance. Todos los derechos reservados.</span>
+    <span>España · Argentina</span>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// ── CHAT AGENT ──
+const SYSTEM = `Eres el agente de captación de Abratti Football Performance, consultoría deportiva de élite liderada por Leonardo Abratti (ex entrenador profesional en 1ª y 2ª División Argentina; asesor DUX Logroño con ascenso a LigaF; formador de futbolistas profesionales).
+
+CASOS DE ÉXITO clave:
+- Marcos Fernández: desde los 15 años en Nàstic → Selección Catalana → Real Betis → Espanyol → hoy Nº9 pichichi AD Ceuta
+- Sofía Domínguez: proceso 2024 → Selección Argentina, Mundial Sub-20 Colombia
+- Juan Cruz Bejarano: proceso 2021-2023 → FC Barcelona vino a buscarlo
+
+METODOLOGÍA: Análisis → Diagnóstico → Plan personalizado → Salto de nivel.
+TONO: Profesional, apasionado, cercano. Escucha antes de proponer. Máximo 3-4 frases. Siempre con una pregunta al final. 
+OBJETIVO: Que el futbolista o su representante solicite la consulta inicial gratuita con Leonardo.
+Responde siempre en español.`;
+
+let history = [];
+let busy = false;
+
+async function claude(text) {
+  history.push({ role: "user", content: text });
+  const r = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system: SYSTEM, messages: history })
+  });
+  const d = await r.json();
+  const reply = d.content.map(b => b.text || "").join("");
+  history.push({ role: "assistant", content: reply });
+  return reply;
+}
+
+function addBubble(role, text, opts) {
+  const win = document.getElementById("chatWin");
+  const row = document.createElement("div");
+  row.className = "msg-row " + (role === "bot" ? "" : "user");
+  const av = document.createElement("div");
+  av.className = "msg-av " + role;
+  av.textContent = role === "bot" ? "AFP" : "Tú";
+  const bub = document.createElement("div");
+  bub.className = "msg-bub " + role;
+  bub.innerHTML = text.replace(/\n/g, "<br>");
+  if (opts) {
+    const qr = document.createElement("div");
+    qr.className = "quick-replies";
+    opts.forEach(o => {
+      const b = document.createElement("button");
+      b.className = "qr-btn"; b.textContent = o;
+      b.onclick = () => { qr.remove(); doSend(o); };
+      qr.appendChild(b);
+    });
+    bub.appendChild(qr);
+  }
+  row.appendChild(av); row.appendChild(bub);
+  win.appendChild(row);
+  win.scrollTop = win.scrollHeight;
+}
+
+function addTyping() {
+  const win = document.getElementById("chatWin");
+  const row = document.createElement("div");
+  row.className = "msg-row"; row.id = "typing";
+  const av = document.createElement("div"); av.className = "msg-av bot"; av.textContent = "AFP";
+  const bub = document.createElement("div"); bub.className = "msg-bub bot";
+  bub.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+  row.appendChild(av); row.appendChild(bub);
+  win.appendChild(row); win.scrollTop = win.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById("typing");
+  if (t) t.remove();
+}
+
+async function doSend(text) {
+  if (busy) return;
+  busy = true;
+  document.getElementById("chatSend").disabled = true;
+  addBubble("user", text);
+  addTyping();
+  try {
+    const reply = await claude(text);
+    removeTyping();
+    addBubble("bot", reply);
+  } catch(e) {
+    removeTyping();
+    addBubble("bot", "Disculpá, hubo un error. Por favor intentá de nuevo.");
+  }
+  busy = false;
+  document.getElementById("chatSend").disabled = false;
+}
+
+async function sendMsg() {
+  const inp = document.getElementById("chatIn");
+  const v = inp.value.trim();
+  if (!v || busy) return;
+  inp.value = "";
+  await doSend(v);
+}
+
+document.getElementById("chatIn").addEventListener("keydown", e => {
+  if (e.key === "Enter") sendMsg();
+});
+
+async function init() {
+  const r = await claude("Hola, acabo de llegar a la web");
+  addBubble("bot", r, ["Soy jugador/a", "Soy familiar", "Soy representante", "Quiero info primero"]);
+}
+init();
+</script>
+</body>
+</html>
