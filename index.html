@@ -1058,7 +1058,9 @@ async function claude(text) {
   history.push({ role: "user", content: text });
   const r = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    "Content-Type": "application/json",
+"anthropic-api-key": "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",
+"anthropic-version": "2023-06-01"
     body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system: SYSTEM, messages: history })
   });
   const d = await r.json();
