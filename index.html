@@ -1056,12 +1056,13 @@ let busy = false;
 
 async function claude(text) {
   history.push({ role: "user", content: text });
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
+  const r = await fetch("https://abratti-agent.abrattisports.workers.dev/", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "anthropic-api-key": "sk-ant-api03-NUJ1vOX0XUKin1FypTJAOXMS7hwZTEKz_sYWDEDHNnGBetSpSHv0cHeRfTZMotorZ_GonIrimKvj2qBM0sO7Hw-2-ezAQAA", "anthropic-version": "2023-06-01" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system: SYSTEM, messages: history })
   });
   const d = await r.json();
+  if (!d.content) throw new Error(JSON.stringify(d));
   const reply = d.content.map(b => b.text || "").join("");
   history.push({ role: "assistant", content: reply });
   return reply;
