@@ -3,98 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abratti Football Performance | Transformamos talento en élite</title>
+<title>Abratti Football Performance | Consultoría Élite de Fútbol</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;background:#0b1e33;color:#eef}
-a{text-decoration:none}
-.wrap{max-width:900px;margin:auto;padding:0 18px}
-header{padding:14px 0;background:#0e2542;border-bottom:3px solid #4ade80;position:sticky;top:0;z-index:9}
-header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.logo{font-weight:800;font-size:16px}.logo b{color:#4ade80}
-nav a{color:#cfe3ff;font-size:13px;margin-left:12px}
-.hero{padding:56px 0 36px;text-align:center}
-.hero h1{font-size:32px;line-height:1.15}
-.hero h1 span{color:#4ade80}
-.hero p{color:#9fb8dc;margin:14px 0 20px;font-size:16px}
-.btn{display:inline-block;background:#4ade80;color:#06210f;font-weight:800;padding:14px 22px;border-radius:10px;margin:4px;border:0;font-size:15px;cursor:pointer}
-.btn.w{background:#25D366;color:#fff}
-.tags{margin-top:18px;color:#9fb8dc;font-size:13px}
-h2{font-size:24px;margin:0 0 18px;text-align:center}
-h2 span{color:#4ade80}
-section{padding:44px 0}
-.grid{display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:#12294a;border:1px solid #23406b;border-radius:14px;padding:18px}
-.card h3{color:#4ade80;font-size:16px;margin-bottom:6px}
-.card p{color:#cfe3ff;font-size:14px}
-.card .tag{display:inline-block;background:#0d2038;border:1px solid #23406b;border-radius:20px;padding:3px 10px;font-size:11px;color:#9fb8dc;margin-bottom:8px}
-.met{background:#0e2542}
-.quote{text-align:center;color:#9fb8dc;font-style:italic;margin-top:16px}
-form{display:grid;gap:10px}
-input,select,textarea{background:#0d2038;border:1px solid #23406b;border-radius:8px;padding:12px;color:#eef;font-size:14px;width:100%}
-footer{background:#0e2542;padding:26px 0;text-align:center;color:#9fb8dc;font-size:13px;line-height:1.7}
-.wa{position:fixed;bottom:16px;right:16px;background:#25D366;color:#fff;font-weight:800;padding:14px 18px;border-radius:50px;box-shadow:0 6px 18px rgba(0,0,0,.4);font-size:18px}
+:root{--bg:#070d18;--panel:#0d1626;--line:#1e2c44;--gold:#e3b455;--txt:#edf2fa;--mut:#8ca3c3}
+*{margin:0;box-sizing:border-box}body{background:var(--bg);color:var(--txt);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{max-width:1000px;margin:auto;padding:0 20px}
+h1,h2,h3,.logo{font-family:Oswald,Arial,sans-serif;text-transform:uppercase}
+header{position:sticky;top:0;z-index:9;background:rgba(7,13,24,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;letter-spacing:1px}.logo b{color:var(--gold)}
+nav a{color:var(--mut);font-size:13px;margin-left:16px;font-weight:600}nav a:hover{color:var(--gold)}
+.kicker{color:var(--gold);font-size:12px;letter-spacing:3px;font-weight:700;text-transform:uppercase}
+.hero{padding:80px 0 50px;text-align:center;background:radial-gradient(600px 300px at 50% 0,rgba(227,180,85,.12),transparent)}
+.hero h1{font-size:44px;line-height:1.1;margin:14px 0}.hero h1 span{color:var(--gold)}
+.hero p{color:var(--mut);font-size:17px;max-width:640px;margin:0 auto 26px}
+.btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:700;font-size:14px;letter-spacing:.5px;margin:4px;cursor:pointer;border:0}
+.btn.gold{background:var(--gold);color:#161006}.btn.wa{background:#25d366;color:#fff}
+.btn.out{border:1px solid var(--gold);color:var(--gold);background:none}
+.trust{margin-top:26px;color:var(--mut);font-size:12.5px;letter-spacing:1px}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:26px 20px;text-align:center}
+.stats b{display:block;font-family:Oswald;font-size:30px;color:var(--gold)}
+.stats span{font-size:11px;color:var(--mut);letter-spacing:1px;text-transform:uppercase}
+@media(max-width:700px){.stats .wrap{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:32px}}
+section{padding:64px 0}h2{font-size:30px;margin:8px 0 26px;text-align:center}h2 span{color:var(--gold)}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}@media(min-width:780px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:10px;padding:22px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card .tag{display:inline-block;background:rgba(227,180,85,.12);color:var(--gold);border:1px solid rgba(227,180,85,.35);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;margin-bottom:10px;letter-spacing:1px}
+.card h3{font-size:17px;margin-bottom:8px;letter-spacing:.5px}
+.card p{color:var(--mut);font-size:14px;line-height:1.6}
+.met{background:#0a1220}.quote{text-align:center;color:var(--mut);font-style:italic;margin-top:22px;font-size:15px}
+.num{color:var(--gold);font-family:Oswald;font-size:13px;letter-spacing:2px}
+form{display:grid;gap:12px}
+input,select,textarea{background:#0a1220;border:1px solid var(--line);border-radius:8px;padding:13px;color:var(--txt);font-size:14px;width:100%;font-family:Inter}
+input:focus,textarea:focus{outline:1px solid var(--gold)}
+footer{background:#050a12;border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--mut);font-size:13px;line-height:1.8}
+footer b{color:var(--gold)}
+.wa-f{position:fixed;bottom:18px;right:18px;background:#25d366;color:#fff;font-weight:800;padding:14px 18px;border-radius:50px;box-shadow:0 8px 24px rgba(37,211,102,.35);font-size:18px}
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="logo">ABRATTI <b>FOOTBALL PERFORMANCE</b></div><nav><a href="#casos">Casos</a><a href="#metodo">Método</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></nav></div></header>
+<header><div class="wrap"><div class="logo">ABRATTI <b>FOOTBALL PERFORMANCE</b></div>
+<nav><a href="#video">Vídeo</a><a href="#casos">Casos</a><a href="#metodo">Método</a><a href="#servicios">Servicios</a><a href="#contacto" style="color:var(--gold)">Contacto</a></nav></div></header>
 
 <div class="hero wrap">
+<div class="kicker">Consultoría élite de fútbol · 🇪🇸 🇷</div>
 <h1>Transformamos <span>talento</span> en <span>élite</span></h1>
-<p>Consultoría 360° para futbolistas: táctico · físico · emocional.<br>De la base al fútbol profesional, sin entorpecer las directrices de tu club.</p>
-<a class="btn w" href="https://wa.me/34651309750?text=Hola%20Leo,%20quiero%20mi%20consulta%20gratuita">💬 WhatsApp directo</a>
-<a class="btn" href="#contacto">🎯 Consulta gratuita</a>
-<div class="tags">🇪🇸 Espanyol · Liga F · FC Barcelona Masia · 🇦 Mundial Sub-20 · Entrenador Profesional AFA</div>
+<p>Desarrollo 360° del futbolista — táctico · físico · emocional. De la base al profesional sin entorpecer las directrices de tu club.</p>
+<a class="btn wa" href="https://wa.me/34600000000?text=Hola%20Leo,%20quiero%20mi%20consulta%20gratuita">💬 WhatsApp directo</a>
+<a class="btn gold" href="#contacto">🎯 Consulta gratuita</a>
+<div class="trust">RCD ESPANYOL · LIGA F · FC BARCELONA MASIA · MUNDIAL SUB-20 · ENTRENADOR PROFESIONAL AFA</div>
 </div>
 
+<div class="stats"><div class="wrap">
+<div><b>+7</b><span>Años de procesos</span></div>
+<div><b>4</b><span>Casos de éxito</span></div>
+<div><b>2</b><span>Selecciones nacionales</span></div>
+<div><b>1</b><span>Ascenso a Liga F</span></div>
+</div></div>
+
+<section id="video" class="met"><div class="wrap">
+<div class="kicker" style="text-align:center">Mira el método en acción</div>
+<h2>El trabajo <span>habla</span></h2>
+<div style="max-width:420px;margin:auto"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUeG5aNjgtN/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:12px;margin:0;width:100%"></blockquote><script async src="//www.instagram.com/embed.js"></script></div>
+<p style="text-align:center;margin-top:16px"><a class="btn out" href="https://www.instagram.com/reel/DUeG5aNjgtN/" target="_blank">▶ Ver en Instagram</a></p>
+</div></section>
+
 <section id="casos"><div class="wrap">
+<div class="kicker" style="text-align:center">Resultados reales</div>
 <h2>Historias de <span>transformación</span></h2>
 <div class="grid">
-<div class="card"><span class="tag">2019 → 2026</span><h3>Marcos Fernández</h3><p>Llegó con 15 años. Hoy: referencia goleadora profesional, RCD Espanyol / AD Ceuta. Nàstic → Selección Catalana → Betis Deportivo → Espanyol.</p></div>
-<div class="card"><span class="tag">2024</span><h3>Sofía Domínguez</h3><p>Proceso de transformación 2024 → Mundial Sub-20 Colombia. Hoy viste la camiseta de la Selección Mayor Argentina.</p></div>
+<div class="card"><span class="tag">2019 → 2026</span><h3>Marcos Fernández</h3><p>Llegó con 15 años. Hoy referencia goleadora profesional: Nàstic → Selección Catalana → Betis Deportivo → RCD Espanyol / AD Ceuta.</p></div>
+<div class="card"><span class="tag">2024</span><h3>Sofía Domínguez</h3><p>Proceso de transformación → Mundial Sub-20 Colombia. Hoy viste la camiseta de la Selección Mayor Argentina.</p></div>
 <div class="card"><span class="tag">2021 → 2024</span><h3>Juan Cruz Bejarano</h3><p>De Argentina a España con plan de visibilidad total. FC Barcelona lo fichó para La Masia.</p></div>
 <div class="card"><span class="tag">2024 → 2025</span><h3>DUX Logroño</h3><p>Asesoría de dirección deportiva y plantel profesional → ascenso a Liga F.</p></div>
 </div>
 </div></section>
 
 <section id="metodo" class="met"><div class="wrap">
+<div class="kicker" style="text-align:center">Cómo trabajamos</div>
 <h2>El Método <span>360°</span></h2>
 <div class="grid">
 <div class="card"><h3>📊 Evaluación total</h3><p>8 áreas y 40+ criterios: técnica, táctica, física, emocional y fases del juego. Informe profesional con radar y semáforo de alertas.</p></div>
 <div class="card"><h3>🎯 Plan a medida</h3><p>Objetivos tácticos, físicos y emocionales con indicadores medibles. Revisión y ajuste cada 4-8 semanas.</p></div>
 <div class="card"><h3>🧠 Mentalidad ganadora</h3><p>Resolución bajo presión, toma de decisiones, gestión del error y confianza. El salto está en la cabeza.</p></div>
-<div class="card"><h3>🤝 Con tu club, nunca contra tu club</h3><p>Sumamos al método de tu equipo sin entorpecer sus directrices. Trabajamos en silencio, con resultados.</p></div>
+<div class="card"><h3>🤝 Con tu club, nunca contra tu club</h3><p>Sumamos al método de tu equipo sin entorpecer sus directrices. Discreción y resultados.</p></div>
 </div>
 <p class="quote">"No entrenamos más: entrenamos lo que nadie más está entrenando."</p>
 </div></section>
 
 <section id="servicios"><div class="wrap">
-<h2>Servicios</h2>
+<div class="kicker" style="text-align:center">Qué ofrecemos</div>
+<h2>Servicios <span>profesionales</span></h2>
 <div class="grid">
-<div class="card"><h3>01 · Consultoría de rendimiento</h3><p>Análisis y trabajo personalizado para eliminar los frenos que te impiden dar el salto.</p></div>
-<div class="card"><h3>02 · Plan de visibilidad</h3><p>Estrategia para que clubes y representantes del máximo nivel te vean. Conectamos talento con oportunidad.</p></div>
-<div class="card"><h3>03 · Acompañamiento largo plazo</h3><p>Temporada tras temporada hasta el debut. No somos un servicio puntual.</p></div>
-<div class="card"><h3>04 · Career Coach</h3><p>Asesoría para futbolistas profesionales y familias: decisiones de carrera, cesiones y contratos.</p></div>
+<div class="card"><div class="num">01</div><h3>Consultoría de rendimiento</h3><p>Análisis y trabajo personalizado para eliminar los frenos que impiden al futbolista dar el salto.</p></div>
+<div class="card"><div class="num">02</div><h3>Plan de visibilidad</h3><p>Estrategia para que clubes y representantes del máximo nivel te vean. Conectamos talento con oportunidad.</p></div>
+<div class="card"><div class="num">03</div><h3>Acompañamiento largo plazo</h3><p>Temporada tras temporada hasta el debut. No somos un servicio puntual.</p></div>
+<div class="card"><div class="num">04</div><h3>Career Coach</h3><p>Asesoría para futbolistas profesionales y familias: carrera, cesiones y contratos.</p></div>
 </div>
 </div></section>
 
-<section id="contacto" class="met"><div class="wrap" style="max-width:560px">
+<section id="contacto" class="met"><div class="wrap" style="max-width:580px">
+<div class="kicker" style="text-align:center">Da el primer paso</div>
 <h2>¿Eres el próximo <span>caso de éxito</span>?</h2>
-<p style="text-align:center;color:#9fb8dc;margin-bottom:16px">Consulta inicial gratuita + informe 360° de regalo.</p>
-<form action="https://formsubmit.co/abrattisports@gmail.com
-<section id="casos">
+<p style="text-align:center;color:var(--mut);margin-bottom:20px">Consulta inicial gratuita + informe 360° de regalo.</p>
+<form action="https://formsubmit.co/abrattisports@gmail.com" method="POST">
 <input name="nombre" placeholder="Nombre completo *" required>
 <input name="email" type="email" placeholder="Email *" required>
 <input name="edad" type="number" placeholder="Edad">
 <select name="posicion"><option>Posición</option><option>Portero</option><option>Defensa</option><option>Mediocampista</option><option>Extremo</option><option>Delantero</option></select>
 <input name="club" placeholder="Club actual">
 <textarea name="objetivo" rows="3" placeholder="¿Cuál es tu objetivo? *"></textarea>
-<button class="btn" type="submit">🚀 Solicitar consulta gratuita</button>
+<button class="btn gold" type="submit" style="width:100%">🚀 Solicitar consulta gratuita</button>
 </form>
 </div></section>
 
-<footer><div class="wrap">Leo Abratti · Asesor Deportivo & Career Coach<br>🎓 Entrenador Profesional AFA (1ª y 2ª Div Argentina) · 🎓 Asesor Dirección Deportiva Liga F / 1ª Div Fem · 🎓 Asesor Futbolistas Profesionales 🇪🇸<br>IG: @leonardoabratti · @ABRATTISPORT</div></footer>
+<footer><div class="wrap"><b>LEO ABRATTI</b> · Asesor Deportivo & Career Coach<br>🎓 Entrenador Profesional AFA (1ª y 2ª Div Argentina) · 🎓 Asesor Dirección Deportiva Liga F / 1ª Div Fem · 🎓 Asesor Futbolistas Profesionales 🇪🇸<br>📱 +34 600 000 000 · IG: @leonardoabratti · @ABRATTISPORT</div></footer>
 
-<a class="wa" href="https://wa.me/34651309750?text=Hola%20Leo,%20quiero%20mi%20consulta%20gratuita">💬</a>
+<a class="wa-f" href="https://wa.me/34651309750?text=Hola%20Leo,%20quiero%20mi%20consulta%20gratuita">💬</a>
 </body>
 </html>
